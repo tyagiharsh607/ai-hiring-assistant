@@ -2,8 +2,8 @@
 
 Voice-AI powered candidate screening + people search & reachout, built on [Hunar.ai](https://hunar.ai) voice agents and [People Data Labs](https://peopledatalabs.com) for sourcing.
 
-**Deployed app:** _<add Vercel URL after deploy>_
-**Backend API:** _<add Render URL after deploy>_
+**Deployed app:** https://ai-hiring-assistant-drab.vercel.app
+**Backend API:** https://ai-hiring-assistant-4csg.onrender.com
 
 ## What's in here
 
