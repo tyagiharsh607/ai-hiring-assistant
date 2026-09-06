@@ -1,4 +1,5 @@
 import json
+from datetime import timezone
 
 from fastapi import APIRouter, Depends
 from sqlmodel import Session, select
@@ -75,7 +76,10 @@ def list_calls(session: Session = Depends(get_session)):
                 "transcript": call.transcript,
                 "recording_url": call.recording_url,
                 "result": json.loads(call.result_json) if call.result_json else None,
-                "created_at": call.created_at.isoformat(),
+                # created_at is stored as naive UTC (datetime.utcnow()) - stamp it explicitly
+                # as UTC here, otherwise the browser's Date parser treats the bare ISO string
+                # as local time and shows the wrong hour instead of converting from UTC.
+                "created_at": call.created_at.replace(tzinfo=timezone.utc).isoformat(),
             }
         )
     return out
